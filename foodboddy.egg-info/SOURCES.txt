@@ -9,8 +9,12 @@ foodboddy.egg-info/top_level.txt
 foodbuddy/__init__.py
 foodbuddy/params.py
 foodbuddy/utils.py
-foodbuddy/DL_model/__init__.py
+foodbuddy/KNN/KNN_preprocess.py
+foodbuddy/KNN/KNN_to_prediction.py
 foodbuddy/KNN/__init__.py
+foodbuddy/RNN/RNN_preprocess.py
+foodbuddy/RNN/RNN_to_prediction.py
+foodbuddy/RNN/__init__.py
 foodbuddy/api/__init__.py
 foodbuddy/api/fast.py
 foodbuddy/interface/__init__.py

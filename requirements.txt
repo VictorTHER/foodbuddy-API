@@ -13,7 +13,6 @@ h5py==3.10.0
 transformers
 mlflow==2.1.1
 rapidfuzz
-sklearn
 
 # Visualization
 matplotlib
