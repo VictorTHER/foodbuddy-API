@@ -5,6 +5,7 @@ from contextlib import asynccontextmanager
 from PIL import Image
 import io
 
+
 from foodbuddy.KNN.KNN_to_predictions import load_KNN
 from foodbuddy.RNN.RNN_to_prediction import load_RNN
 from foodbuddy.Label_matcher.Target_match_setup import download_targets_df
