@@ -1,0 +1,40 @@
+wheel
+nbresult
+colorama
+ipdb
+ipykernel
+yapf
+matplotlib
+pygeohash
+pytest
+seaborn
+numpy==1.23.5
+pandas==1.5.3
+scipy==1.10.0
+scikit-learn==1.3.1
+google-cloud-bigquery
+google-cloud-storage==2.14.0
+google-api-core==2.8.2
+googleapis-common-protos==1.56.4
+protobuf==3.19.6
+h5py==3.10.0
+db-dtypes
+pyarrow
+mlflow==2.1.1
+prefect==2.19.2
+python-dotenv
+psycopg2-binary
+fastapi==0.108.0
+pytz
+uvicorn
+httpx
+pytest-asyncio
+
+[:sys_platform != "darwin"]
+tensorflow==2.10.0
+
+[:sys_platform == "darwin" and "ARM" in platform_version]
+tensorflow-macos==2.10.0
+
+[:sys_platform == "darwin" and "ARM" not in platform_version]
+tensorflow==2.10.0
