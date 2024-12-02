@@ -1,0 +1,496 @@
+original_target,target_cleaned,recipe_cleaned,ingredient_cleaned,is_ok
+Soft cheese,cheese soft,cheese loaf,cheese feta,fuzzy_matched
+"Ham, raw",ham,,ham,True
+Hard cheese,cheese hard,cheese head,cheese head,fuzzy_matched
+"Bread, wholemeal",bread wholemeal,bread wholemeal,,True
+Cottage cheese,cheese cottage,cheese cottage,cheese cottage,True
+"Bread, half white",bread half white,bread herbal white,bread white,fuzzy_matched
+Fruit salad,fruit salad,fruit salad,,True
+Pancakes,pancake,pancake,pancake,True
+Soft cheese,,,,False
+"Salmon, smoked",salmon smoke,dip salmon smoke,fish salmon smoke,fuzzy_matched
+Avocado,avocado,,avocado,True
+Spring onion / scallion,onion scallion spring,onion salad scallion spicy,,fuzzy_matched
+"Ristretto, with caffeine",caffeine ristretto,fennel risotto,coffee espresso,fuzzy_matched
+"Chips, french fries",chip french fry,chip french fry,,True
+Pasta,pasta,pasta,,True
+Tomato sauce,sauce tomato,sauce tomato,,True
+Cheese,cheese,,cheese,True
+Pear,pear,,pear,True
+Cashew nut,cashew nut,cashew nog nut,cashew salt,fuzzy_matched
+Almonds,almond,,almond,True
+Lentils,lentil,lentil,lentil,True
+Mixed vegetables,mix vegetable,mix vegetable,,True
+Cucumber,cucumber,,cucumber,True
+Cocoa powder,cocoa powder,cocoa crowd,coffee creamer powder,fuzzy_matched
+"Greek Yaourt, yahourt, yogourt ou yoghourt",greek ou yahourt yaourt yoghourt yogourt,greek parfait recipe yogurt yogurt,,fuzzy_matched
+Maple syrup (Concentrate),concentrate maple syrup,cream maple syrup,can pineapple syrup,fuzzy_matched
+"Buckwheat, grain peeled",buckwheat grain peel,buckwheat crawfish pea,buckwheat groat,fuzzy_matched
+Chicken,chicken,chicken,,True
+Broccoli,broccoli,,broccoli,True
+Mayonnaise,mayonnaise,mayonnaise,,True
+"Green bean, steamed, without addition of salt",addition bean green salt steam without,bass bean green roast sea tomato,mix nut peanut unsalted without,fuzzy_matched
+Sausage,sausage,,sausage,True
+"(bread, meat substitute, lettuce, sauce)",bread lettuce meat sauce substitute,bread butter marmite sauce sourdough,bread egg meat sandwich white,fuzzy_matched
+Tart,tart,blt tart,heart,fuzzy_matched
+Rice,rice,ice,brioche,fuzzy_matched
+"Tomato, raw ",tomato,,tomato,True
+"White coffee, with caffeine",caffeine coffee white,chocolate coffee white,cafe coffee mocha,fuzzy_matched
+Apple,apple,,apple,True
+Linseeds,linseed,blini sweet,mix seed,fuzzy_matched
+Sunflower seeds,seed sunflower,,seed sunflower,True
+"Ham, cooked",cook ham,cook ham,,True
+Lye pretzel (soft),lye pretzel soft,pretzel soft,pretzel soft,fuzzy_matched
+Butter,butter,,butter,True
+"Cucumber, pickled ",cucumber pickle,cucumber pickle,,True
+"Soup, cream of vegetables",cream soup vegetable,cream soup vegetable,cream soup vegetable,True
+Banana,banana,,banana,True
+"Pasta, noodles",noodle pasta,noodle satay,cook pasta,fuzzy_matched
+Cream,cream,bream,cereal,fuzzy_matched
+"Cake, chocolate",cake chocolate,cake chocolate,,True
+"Salad, leaf / salad, green",green leaf salad salad,greek lasagna salad,dress salad salad,fuzzy_matched
+Potatoes steamed,potato steam,potato steam,,True
+White cabbage,cabbage white,cabbage stew,cabbage chinese,fuzzy_matched
+"Applesauce, unsweetened, canned",applesauce can unsweetened,applesauce potato sweet,applesauce unsweetened,fuzzy_matched
+Mushrooms,mushroom,,mushroom,True
+Egg,egg,eggnog,eggnog,fuzzy_matched
+"Bread, white",bread white,bread white,bread white,True
+"Coffee, with caffeine",caffeine coffee,cake coffee,cafe coffee mocha,fuzzy_matched
+Herbal tea,herbal tea,herbal tea trio,herbal hot tea,fuzzy_matched
+"Beef, sirloin steak",beef sirloin steak,fry sirloin steak,beef round steak,fuzzy_matched
+Zucchini,zucchini,can zucchini,bread zucchini,fuzzy_matched
+Mandarine,mandarine,gt mandarin,margarine,fuzzy_matched
+"Juice, apple",apple juice,apple juice,apple juice,True
+Caprese salad (Tomato Mozzarella),caprese mozzarella salad tomato,fresh mozzarella salad tomato,cheese mozzarella part skim,fuzzy_matched
+"Wine, red",red wine,,red wine,True
+"Pasta, ravioli, stuffing",pasta ravioli stuff,lobster ravioli stuff,meatfilled ravioli sauce,fuzzy_matched
+"Omelette, plain",omelette plain,omelette prawn,fritter plain,fuzzy_matched
+Dark chocolate,chocolate dark,chocolate soda,candy chocolate dark,fuzzy_matched
+French salad dressing,dress french salad,dress french salad,,True
+Kaki,kaki,kadi,,fuzzy_matched
+Macaroon,macaroon,macaroon,,True
+"Carrot, raw",carrot,,carrot,True
+"Crêpe, plain",crêpe plain,crêpes vegan,crepe plain,fuzzy_matched
+Jam,jam,jam,jam,True
+Chicken nuggets,chicken nugget,chicken nugget,chicken nugget,True
+"Soup, pumpkin",pumpkin soup,pumpkin soup,pumpkin soup,True
+Sushi,sushi,sushi,sushi,True
+Chestnuts,chestnut,,chestnut,True
+"Sauce, soya",sauce soya,dip sauce soy,sauce soy,fuzzy_matched
+Chinese cabbage,cabbage chinese,,cabbage chinese,True
+"Tea, green",green tea,green tea,,True
+"Bread, whole wheat",bread wheat whole,bread wheat whole,bread wheat whole,True
+Eggplant,eggplant,,eggplant,True
+Onion,onion,,onion,True
+Garlic,garlic,,garlic,True
+Hummus,hummus,hummus,,True
+"Pizza, with vegetables, baked",bake pizza vegetable,bacon pizza vegetable,meat pizza top vegetable,fuzzy_matched
+Black olives,black olive,,black olive,True
+"Pizza, Margherita, baked",bake margherita pizza,bean margherita pizza,,fuzzy_matched
+"Salad, lambs' ear",ear lamb salad,bean lamb salad,crab salad,fuzzy_matched
+Glucose drink 50g,drink g glucose,drink ice slush,drink energy monster,fuzzy_matched
+Mozzarella,mozzarella,dip mozzarella,cheese mozzarella,fuzzy_matched
+Cauliflower,cauliflower,,cauliflower,True
+"Quiche, with spinach, baked, with cake dough",bake cake dough quiche spinach,bacon quiche spinach,meatless quiche spinach,fuzzy_matched
+Green olives,green olive,,green olive,True
+"Bell pepper, red, raw ",bell pepper red,bell pepper rice,cook pepper red,fuzzy_matched
+Brazil nut,brazil nut,,brazil nut,True
+"Bread, pita",bread pita,bread pita,bread pita,True
+"Pasta, wholemeal",pasta wholemeal,flatbread wholemeal,,fuzzy_matched
+"Soup of lentils, Dahl (Dhal)",dahl dhal lentil soup,ham lentil soup,can lentil soup,fuzzy_matched
+Prosecco,prosecco,cake prosecco,broccoli,fuzzy_matched
+"Bread, toast",bread toast,bread tomato,bread rye toast,fuzzy_matched
+"Pasta, penne",pasta penne,parmesan penne,pasta sauce,fuzzy_matched
+Salmon,salmon,blt salmon,almond,fuzzy_matched
+Panna cotta,cotta panna,cotta panna,,True
+Water with lemon juice,juice lemon water,ginger lemon water,form juice lemon n,fuzzy_matched
+"Espresso, with caffeine",caffeine espresso,crinkle espresso,coffee espresso,fuzzy_matched
+"Egg, scrambled, prepared",egg prepare scramble,egg pepper scramble,egg egg fat n omelet scramble,fuzzy_matched
+"Juice, orange",juice orange,,juice orange,True
+Ice cubes,cub ice,rub spice,gumbo rice,fuzzy_matched
+Water,water,,water,True
+Braided white loaf,braid loaf white,bread loaf white,bread toast white,fuzzy_matched
+Emmental cheese,cheese emmental,cheese meatball,cheese feta,fuzzy_matched
+"Hazelnut-chocolate spread(Nutella, Ovomaltine, Caotina)",caotina hazelnutchocolate ovomaltine spreadnutella,cake hazelnutandchocolate meringue,candy chocolate cover peanut,fuzzy_matched
+"Water, mineral",mineral water,ice salad water,meal toddler,fuzzy_matched
+"Quiche, with cheese, baked, with puff pastry",bake cheese pastry puff quiche,bake cheese pasta spinach,cheese pastry puff,fuzzy_matched
+"Bread, sourdough",bread sourdough,bread sourdough,,True
+Hazelnut,hazelnut,,hazelnut,True
+"Bread, nut",bread nut,bread nut,bread nut,True
+"Soup, Miso",miso soup,miso soup,,True
+"Curry, vegetarian",curry vegetarian,burger vegetarian,gravy vegetarian,fuzzy_matched
+"Rice, Basmati",basmati rice,basmati rice,,True
+"Bacon, frying",bacon fry,bacon fry,,True
+"Mashed potatoes, prepared, with full fat milk, with butter",butter fat full mash milk potato prepare,butter garlic mash potato roast,butter eat fresh make peel potato roast,fuzzy_matched
+"Spinach, raw",spinach,,spinach,True
+Naan (indien bread),bread indien naan,flatbread indian naan,bread naan,fuzzy_matched
+Cream spinach,cream spinach,cream spinach,cream spinach,True
+Halloumi,halloumi,fry halloumi,,fuzzy_matched
+Chicken curry (cream/coconut milk. curry spices/paste)),chicken creamcoconut curry curry milk spicespaste,chicken coconut curry milk potato sweet,,fuzzy_matched
+"Sauce, cream",cream sauce,clam sauce,cream ice,fuzzy_matched
+"Bread, French (white flour)",bread flour french white,blend four french spice,bread french vienna,fuzzy_matched
+Tomme,tomme,tom yum,atole,fuzzy_matched
+"Vegetable mix, peas and carrots",carrot mix pea vegetable,carrot soup vegetable,curry rice vegetable,fuzzy_matched
+Parsley,parsley,,parsley,True
+Brownie,brownie,brownie,,True
+Salami,salami,,salami,True
+Dairy ice cream,cream dairy ice,cream dairy ice,,True
+Carrot cake,cake carrot,cake carrot,,True
+"Beetroot, steamed, without addition of salt",addition beetroot salt steam without,,,False
+Salad dressing,dress salad,dress salad,,True
+Dried meat,dry meat,deer meat,dry pear,fuzzy_matched
+Mixed salad (chopped without sauce),chop mix salad sauce without,pizza red sauce without,chicken grill sauce wing without,fuzzy_matched
+Feta,feta,festival,fajita,fuzzy_matched
+Bread,bread,bread,,True
+Chickpeas,chickpea,,chickpea,True
+Oil,oil,poi,,fuzzy_matched
+"Potato salad, with mayonnaise yogurt dressing",dress mayonnaise potato salad yogurt,dress mayonnaise potato salad shorecooks,make mayonnaise potato salad,fuzzy_matched
+Balsamic salad dressing,balsamic dress salad,balsamic dress salad,,True
+Romanesco,romanesco,roast romanesco,,fuzzy_matched
+Kolhrabi,kolhrabi,bake kohlrabi,kohlrabi,fuzzy_matched
+Alfa sprouts,alfa sprout,slaw sprout,alfalfa sprout,fuzzy_matched
+Brussel sprouts,brussel sprout,brussels sprout,brussels sprout,fuzzy_matched
+"Bacon, cooking",bacon cook,bacon taco,bacon beef cook,fuzzy_matched
+Bulgur,bulgur,bulgur,,True
+Pumpkin,pumpkin,can pumpkin,pie pumpkin,fuzzy_matched
+"Tea, black",black tea,black tan,black bread,fuzzy_matched
+Tea,tea,texan,oatmeal,fuzzy_matched
+Kiwi,kiwi,tekiwi,kimchi,fuzzy_matched
+"Chocolate egg, small",chocolate egg small,chocolate egg marshmallow,chocolate milk,fuzzy_matched
+Cappuccino,cappuccino,cappuccino,,True
+"Chicken, wing",chicken wing,chicken wing,,True
+"Zucchini, stewed, without addition of fat, without addition of salt",addition addition fat salt stew without without zucchini,,,False
+Gruyère,gruyère,gruyère puff,,fuzzy_matched
+"Bread, black",black bread,,black bread,True
+Fresh cheese,cheese fresh,cheese fresh,,True
+Mango,mango,,mango,True
+"Spinach, steamed, without addition of salt",addition salt spinach steam without,bacon clam spinach steam tomato,,fuzzy_matched
+Fish,fish,,fish,True
+Crisps,crisp,beet crisp,apple crisp,fuzzy_matched
+Pork,pork,,pork,True
+Rosti,rosti,rosti,,True
+Milk Chocolate with hazelnuts,chocolate hazelnut milk,chocolate hazelnut roll,chocolate hazelnut spread,fuzzy_matched
+"Flakes, oat",flake oat,bake oat,milk oat,fuzzy_matched
+"Bread, grain",bread grain,bread raisin,bread raisin,fuzzy_matched
+Tuna,tuna,bbq tuna,fish tuna,fuzzy_matched
+Walnut,walnut,one walnut,oil walnut,fuzzy_matched
+Ratatouille,ratatouille,ratatouille,ratatouille,True
+Bacon,bacon,baron,bacon bit,fuzzy_matched
+Bouillon,bouillon,bouillon cube,bologna,fuzzy_matched
+Sesame seeds,seed sesame,,seed sesame,True
+Baked potato,bake potato,bake potato,bake potato,True
+Fennel,fennel,fennel,,True
+"Beetroot, raw",beetroot,beetroot dip,beef roast,fuzzy_matched
+Meat,meat,,meat,True
+"Risotto, without cheese, cooked",cheese cook risotto without,cheese onion risotto,chinese moo pancake pork shu without,fuzzy_matched
+"Sauce, roast",roast sauce,roast sausage,pasta sauce,fuzzy_matched
+Philadelphia,philadelphia,clam philadelphia pie,,fuzzy_matched
+"Mushroom, (average), stewed, without addition of fat, without addition of salt",addition addition average fat mushroom salt stew without without,,,False
+"Bell pepper, red, stewed, without addition of fat, without addition of salt",addition addition bell fat pepper red salt stew without without,,,False
+White chocolate,chocolate white,chocolate pie white,chocolate ice,fuzzy_matched
+"Pork, escalope",escalope pork,chop ole pork,ear pork,fuzzy_matched
+Breadcrumbs (unspiced),breadcrumb unspiced,breadcrumb spice top,bread rice,fuzzy_matched
+Fondue,fondue,beef fondue,tongue,fuzzy_matched
+Honey,honey,,honey,True
+Strawberries,strawberry,,strawberry,True
+Crunch Müesli,crunch müesli,crunchies,,fuzzy_matched
+"Turnover with meat (small meat pie, empanadas)",empanadas meat meat pie small turnover,empanadillas galician gallegas recipe turnover,,fuzzy_matched
+"Tea, rooibos",rooibos tea,pear rooibos tea,,fuzzy_matched
+"Pie, plum, baked, with cake dough",bake cake dough pie plum,bake cake doughnut,cake doughnut ice type,fuzzy_matched
+"Potatoes au gratin, dauphinois, prepared",au dauphinois gratin potato prepare,dauphinoise gratin potato scallop,,fuzzy_matched
+"Sauce, mushroom",mushroom sauce,mushroom sauce,,True
+Mixed nuts,mix nut,mix nut,mix nut,True
+"Bread, wholemeal toast",bread toast wholemeal,bread wholemeal,bread toast white,fuzzy_matched
+Red radish,radish red,amish bread,radish,fuzzy_matched
+Dumplings,dumpling,dumpling,,True
+"Pasta, linguini, parpadelle, Tagliatelle",linguini parpadelle pasta tagliatelle,evan funke handmade pasta tagliatelle ’,,fuzzy_matched
+"Chicken, cut into stripes (only meat)",chicken cut meat strip,chicken nutty strip,chicken cream soup,fuzzy_matched
+"Bouillon, vegetable",bouillon vegetable,bouillon vegetable,,True
+Sun-dried tomatoe,sundried tomatoe,sundried tomato,sundried tomato,fuzzy_matched
+"Bread, Ticino",bread ticino,bread taco,bread cinnamon,fuzzy_matched
+"Porridge, prepared, with partially skimmed milk",milk partially porridge prepare skim,,,False
+Soya drink (soy milk),drink milk soy soya,corn milk miso soup,,fuzzy_matched
+French beans,bean french,bread french,bean frank,fuzzy_matched
+Meat balls,ball meat,ball matzo,bagel wheat,fuzzy_matched
+Popcorn salted,popcorn salt,popcorn salad,popcorn,fuzzy_matched
+Beer,beer,,beer,True
+Orange,orange,,orange,True
+"Chocolate, filled",chocolate fill,chocolate milk,chocolate milk,fuzzy_matched
+Milk chocolate,chocolate milk,chocolate milk,chocolate milk,True
+Blueberries,blueberry,,blueberry,True
+"Yaourt, yahourt, yogourt ou yoghourt, natural",natural ou yahourt yaourt yoghourt yogourt,,,False
+"Bread, fruit",bread fruit,bread fruit,bread fruit,True
+"Beef, cut into stripes (only meat)",beef cut meat strip,beef cucumber salad strip,beef eat lean steak strip,fuzzy_matched
+Corn,corn,,corn,True
+Tête de Moine,de moine tête,lemon torte,,fuzzy_matched
+White radish,radish white,radish salad white,fish white,fuzzy_matched
+"Sauce, pesto",pesto sauce,pesto sauce,pesto sauce,True
+Parmesan,parmesan,elk parmesan,pecan,fuzzy_matched
+Celery,celery,,celery,True
+Oat milk,milk oat,milk oat,milk oat,True
+"Soup, potato",potato soup,potato soup,potato soup,True
+Cream cheese,cheese cream,cheese cream,,True
+"Crisp bread, Wasa",bread crisp wasa,bread christmas,bread irish soda,fuzzy_matched
+Grapes,grape,,grape,True
+Witloof chicory,chicory witloof,chicory griddle,,fuzzy_matched
+Bolognaise sauce,bolognaise sauce,bolognaise sauce,,True
+Apple crumble,apple crumble,apple crumble,,True
+Pistachio,pistachio,dip pistachio,nut pistachio,fuzzy_matched
+Pecan nut,nut pecan,cup pecan,pecan,fuzzy_matched
+Tofu,tofu,toum,tongue,fuzzy_matched
+"Wine, white",white wine,,white wine,True
+"Tea, spice",spice tea,spice tea,,True
+Quinoa,quinoa,quinoa,,True
+Smoothie,smoothie,bff smoothie,fruit smoothie,fuzzy_matched
+Leek,leek,,leek,True
+"Soup, vegetable",soup vegetable,soup vegetable,soup vegetable,True
+"Shrimp, boiled",boil shrimp,boil shrimp,,True
+Kefir drink,drink kefir,drink herbkefir,drink energy,fuzzy_matched
+Semi-hard cheese,cheese semihard,cheese spread,cheese head,fuzzy_matched
+"Bread, rye",bread rye,bread rye,bread rye,True
+Guacamole,guacamole,guacamole,guacamole,True
+M&M's,mm,,,False
+"Juice, multifruit",juice multifruit,mince multi,biscuit fruit,fuzzy_matched
+"Salad, rocket",rocket salad,crab pocket salad,carrot salad,fuzzy_matched
+"Hamburger (Bread, meat, ketchup)",bread hamburger ketchup meat,cornbread hamburger pie,bun hamburger medium patty wheat,fuzzy_matched
+Cookies,cooky,cooky t,cookie,fuzzy_matched
+Cake (oblong),cake oblong,cake moon,cake sponge,fuzzy_matched
+"Pizza, with ham, with mushrooms, baked",bake ham mushroom pizza,bake ham mushroom pizza toast,cream mushroom soup,fuzzy_matched
+Fruit coulis,coulis fruit,crisp fruit,coleslaw fruit,fuzzy_matched
+Plums,plum,,plum,True
+"Pizza, with ham, baked",bake ham pizza,bake ham spiral,cake clam patty,fuzzy_matched
+Dates,date,,date,True
+Peanut butter,butter peanut,butter peanut,butter peanut,True
+"Beans, kidney",bean kidney,,bean kidney,True
+Pineapple,pineapple,,pineapple,True
+"Chicken, breast",breast chicken,breast chicken,,True
+Cheddar,cheddar,cheddar loaf,chard,fuzzy_matched
+Ketchup,ketchup,ketchup,ketchup,True
+"Tea, peppermint",peppermint tea,peppermint star,pepper steak,fuzzy_matched
+Fajita (bread only),bread fajita,bread pita,bread pita,fuzzy_matched
+Sweet potato,potato sweet,potato sweet,potato sweet,True
+Savoury puff pastry stick,pastry puff savoury stick,pastry puff savoury tart,pastry puff,fuzzy_matched
+"Chicken, leg",chicken leg,chicken ole,chicken liver,fuzzy_matched
+Red cabbage,cabbage red,cabbage red,cabbage red,True
+Croissant,croissant,croissant,croissant,True
+"Pasta, Hörnli",hörnli pasta,garlic pasta,,fuzzy_matched
+"Chili con carne, prepared",carne chili con prepare,carne chilli con recipe,can chili meat,fuzzy_matched
+Sour cream,cream sour,cream sour,,True
+Cheese for raclette,cheese raclette,apple cheese raclette,cheese ricotta,fuzzy_matched
+"Sweet corn, canned",can corn sweet,cake corn sweet,candy potato sweet,fuzzy_matched
+Processed cheese,cheese process,cheese rice,cheese process vegetable,fuzzy_matched
+Goat cheese (soft),cheese goat soft,cheese goat soufflé,cheese goat,fuzzy_matched
+Couscous,couscous,couscous,,True
+Leaf spinach,leaf spinach,bean spinach,cream spinach,fuzzy_matched
+"Pasta, tortelloni, stuffing",pasta stuff tortelloni,pasta salad tortellini,meatfilled sauce tortellini,fuzzy_matched
+Praline,praline,praline,,True
+Croissant with chocolate filling,chocolate croissant fill,chocolate croissant,chocolate croissant,fuzzy_matched
+Focaccia,focaccia,focaccia,,True
+Capers,caper,can pear,can pear,fuzzy_matched
+Spaetzle,spaetzle,spaetzle,,True
+Grissini,grissini,grissini,,True
+Sweets / candies,candy sweet,candy mash sweet,candy potato sweet,fuzzy_matched
+Fruit tart,fruit tart,fruit tart,,True
+Brie,brie,brine,brioche,fuzzy_matched
+Biscuit with Butter,biscuit butter,biscuit butter,,True
+Peanut,peanut,,peanut,True
+"Syrup (diluted, ready to drink)",dilute drink ready syrup,buttermilk grandma syrup,drink strawberry syrup,fuzzy_matched
+"Pasta, spaghetti",pasta spaghetti,asian spaghetti,sauce spaghetti,fuzzy_matched
+Sauerkraut,sauerkraut,sauerkraut,sauerkraut,True
+Mustard,mustard,,mustard,True
+Vegetables,vegetable,,vegetable,True
+"Soup, tomato",soup tomato,soup tomato,soup tomato,True
+Apple pie,apple pie,apple pie,apple pie,True
+"White bread with butter, eggs and milk",bread butter egg milk white,bread buttermilk wheat,bread egg sandwich white,fuzzy_matched
+Savoury puff pastry,pastry puff savoury,pastry puff savoury tart,pastry puff,fuzzy_matched
+Pomegranate,pomegranate,,pomegranate,True
+Anchovies,anchovy,anchovy eye,anchovy fish,fuzzy_matched
+"Tuna, in oil, drained",drain oil tuna,asian roll tuna,can fish tuna,fuzzy_matched
+Lemon pie,lemon pie,lemon pie,lemon pie,True
+Pumpkin seeds,pumpkin seed,,pumpkin seed,True
+"Faux-mage Cashew, vegan chers",cashew chers fauxmage vegan,cashew sauce vegan,,fuzzy_matched
+"Beans, white",bean white,bean white,bean white,True
+Sugar Melon,melon sugar,melon soup,brown sugar,fuzzy_matched
+Mixed seeds,mix seed,,mix seed,True
+Hamburger,hamburger,hamburger,hamburger,True
+Hamburger bun,bun hamburger,bun hamburger,,True
+Oil & vinegar salad dressing,dress oil salad vinegar,dress oil salad vinegar,,True
+"Latte macchiato, with caffeine",caffeine latte macchiato,latte macchiato,coffee macchiato,fuzzy_matched
+Greek salad,greek salad,greek salad,,True
+Celeriac,celeriac,bake celeriac,celery,fuzzy_matched
+"Pasta, twist",pasta twist,pesto twist,pasta sauce,fuzzy_matched
+Chocolate mousse,chocolate mousse,chocolate mousse,,True
+Coriander,coriander,coriander rice,cranberry,fuzzy_matched
+"Cenovis, yeast spread",cenovis spread yeast,beer bread yeast,extract spread yeast,fuzzy_matched
+Milk,milk,,milk,True
+Thickened cream (> 35%),cream thicken,cream ice,cream ice,fuzzy_matched
+Berries,berry,,berry,True
+Meringue,meringue,meringue,meringue,True
+Biscuits,biscuit,biscuit,biscuit,True
+Beef,beef,,beef,True
+Lemon,lemon,,lemon,True
+Müesli,müesli,muesli,,fuzzy_matched
+Chives,chive,,chive,True
+"Birchermüesli, prepared, no sugar added",add birchermüesli prepare sugar,,add ice italian sugar,fuzzy_matched
+Crackers,cracker,,cracker,True
+Fish crunchies (battered),batter crunchies fish,batter beer chip fish,baby crunchies toddler,fuzzy_matched
+"Beef, filet",beef filet,beef fillet,beef brisket,fuzzy_matched
+Spring roll (fried),fry roll spring,fresh roll spring,fry onion ring,fuzzy_matched
+Muffin,muffin,,muffin,True
+"Bread, spelt",bread spell,bread spell,,True
+"Savoy cabbage, steamed, without addition of salt",addition cabbage salt savoy steam without,bacon cabbage green mustard savoy steam,,fuzzy_matched
+Pine nuts,nut pine,,nut pine,True
+Chorizo,chorizo,chorizo,chorizo,True
+Chia grains,chia grain,chard gratin,chicken grind,fuzzy_matched
+Frying sausage,fry sausage,bun fry sausage,gravy sausage,fuzzy_matched
+"French pizza from Alsace, baked",alsace bake french pizza,apple bake french toast,,fuzzy_matched
+Perch fillets (lake),fillet lake perch,fillet perch,fill lemon pie,fuzzy_matched
+Paprika chips,chip paprika,chicken paprika,chip pita,fuzzy_matched
+"Gummi bears, fruit jellies, Jelly babies with fruit essence",baby bear essence fruit fruit gummi jelly jelly,,,False
+Sauce (savoury),sauce savoury,rib sauce savory,sauce soy,fuzzy_matched
+Blue mould cheese,blue cheese mould,blue cheese mousse,blue cheese roquefort,fuzzy_matched
+"Wine, rosé",rosé wine,mull rosé wine,rise wine,fuzzy_matched
+"Meat terrine, paté",meat paté terrine,meat platter,meat pad thai,fuzzy_matched
+Roll with pieces of chocolate,chocolate piece roll,chocolate cream ice roll,chocolate ice,fuzzy_matched
+"Goat, (average), raw",average goat,braise goat,beverage corn,fuzzy_matched
+Lemon Cake,cake lemon,cake lemon,,True
+Coconut milk,coconut milk,coconut milk,coconut milk,True
+Dried raisins,dry raisin,bread raisin,raisin,fuzzy_matched
+Eggplant caviar,caviar eggplant,caviar eggplant,,True
+"Rice, wild",rice wild,rice wild,,True
+"Pastry, flaky",flaky pastry,flaky pastry,,True
+Seeds,seed,sweet,seaweed,fuzzy_matched
+Falafel (balls),ball falafel,bake falafel,falafel,fuzzy_matched
+Gluten-free bread,bread glutenfree,bread glutenfree,,True
+Kebab in pita bread,bread kebab pita,bread pita,bread pita,fuzzy_matched
+Wienerli (Swiss sausage),sausage swiss wienerli,sausage swirl,,fuzzy_matched
+"Mustard, Dijon",dijon mustard,dijonstyle mustard,dip honey mustard,fuzzy_matched
+Cooked sausage,cook sausage,duck sausage,pork sausage,fuzzy_matched
+"Risotto, with mushrooms, cooked",cook mushroom risotto,cake mushroom risotto,can cook mushroom,fuzzy_matched
+"Beef, minced (only meat)",beef meat mince,beef kebab mince,bean meat rice,fuzzy_matched
+Chocolate,chocolate,chocolate mum,chocolate dip,fuzzy_matched
+Meatloaf,meatloaf,meatloaf,,True
+"Salt cake (vegetables, filled)",cake fill salt vegetable,bake fillet salmon vegetable,chicken quesadilla vegetable,fuzzy_matched
+Cantonese fried rice,cantonese fry rice,cantonese fry rice,,True
+Shrimp / prawn (small),prawn shrimp small,parmesan shrimp steak,can shrimp,fuzzy_matched
+"Butter, herb",butter herb,butter herb,,True
+Balsamic vinegar,balsamic vinegar,balsamic beet vinegar,vinegar,fuzzy_matched
+"Roll of half-white or white flour, with large void",flour halfwhite large roll void white,,,False
+Chocolate cookies,chocolate cooky,chocolate cooky,,True
+Corn crisps,corn crisp,corn crispy,corn relish,fuzzy_matched
+Bagel (without filling),bagel fill without,bake fillet trout,bagel grain white whole,fuzzy_matched
+"Lentils green (du Puy, du Berry)",berry du du green lentil puy,curry green lentil soup,,fuzzy_matched
+"Chocolate milk, chocolate drink",chocolate chocolate drink milk,chocolate chocolate milkshake,chocolate drink milk,fuzzy_matched
+Cocktail,cocktail,,cocktail,True
+Croutons,crouton,crouton,crouton,True
+Cod,cod,oda,collard,fuzzy_matched
+"Soya Yaourt, yahourt, yogourt ou yoghourt",ou soya yahourt yaourt yoghourt yogourt,,,False
+Veal sausage,sausage veal,sausage stew,sausage venison,fuzzy_matched
+Cheesecake,cheesecake,cheesecake,,True
+"Cordon bleu, from pork schnitzel, fried",bleu cordon fry pork schnitzel,bleu cordon pork recipe romanian schnitzel,bleu cordon veal,fuzzy_matched
+"Sandwich (ham, cheese and butter)",butter cheese ham sandwich,blue cheese ham sandwich,butter peanut sandwich,fuzzy_matched
+"Pasta in butterfly form, farfalle",butterfly farfalle form pasta,butter campanelle parsley pasta,,fuzzy_matched
+"Grits, polenta, maize flour",flour grit maize polenta,almond apricot cake polenta,,fuzzy_matched
+Croque monsieur,croque monsieur,croque monsieur,,True
+Raspberries,raspberry,,raspberry,True
+Ice tea,ice tea,ice tea,,True
+"Lasagne, vegetable, prepared",lasagne prepare vegetable,lasagne roast vegetable,lasagna meatless vegetable,fuzzy_matched
+Dips,dip,,dip,True
+Corn Flakes,corn flake,corn flan,corn oil,fuzzy_matched
+Swiss chard,chard swiss,bake chard swiss,cheese swiss,fuzzy_matched
+Rice noodles/vermicelli,noodlesvermicelli rice,bowl noodle vermicelli,,fuzzy_matched
+Tiramisu,tiramisu,tiramisu,tiramisu,True
+Peas,pea,opera,pear,fuzzy_matched
+"Pork, roast",pork roast,pork roast,pork roast,True
+"Sauce, curry",curry sauce,curry sauce,curry sauce,True
+Apricots,apricot,,apricot,True
+Lamb,lamb,clam,clam,fuzzy_matched
+"Lasagne, meat, prepared",lasagne meat prepare,lasagne meat pea sauce,lasagna meat restaurant,fuzzy_matched
+Bouquet garni,bouquet garni,bouquet garni,,True
+"Butter, spread, puree almond",almond butter puree spread,almond butter recipe,almond butter lower sodium,fuzzy_matched
+"Cake, salted",cake salt,cake skate,cashew salt,fuzzy_matched
+Shrimp / prawn (large),large prawn shrimp,burger shrimp,cake patty shrimp,fuzzy_matched
+"Dough (puff pastry, shortcrust, bread, pizza dough)",bread dough dough pastry pizza puff shortcrust,almond dough pastry pie shortcrust,,fuzzy_matched
+Rice waffels,rice waffels,rice waffle,fruit waffle,fuzzy_matched
+Cervelat,cervelat,cereal treat,cereal,fuzzy_matched
+"Tea, verveine",tea verveine,tallerine,tangerine,fuzzy_matched
+Sekt,sekt,sweet,sorbet,fuzzy_matched
+Sorbet,sorbet,,sorbet,True
+Brioche,brioche,brioche,brioche,True
+Coca Cola,coca cola,coco cola,can clam,fuzzy_matched
+Coca Cola Zero,coca cola zero,cocacola rice,chocolate cocoa hot,fuzzy_matched
+"Processed meat, Charcuterie",charcuterie meat process,charcuterie fry rice,chicken meatless,fuzzy_matched
+Ham croissant,croissant ham,croissant,croissant,fuzzy_matched
+Mousse,mousse,,mousse,True
+"Sauce, sweet & sour",sauce sour sweet,sauce sour sweet,sauce sour sweet,True
+"Ham, turkey",ham turkey,hash turkey,can turkey,fuzzy_matched
+"Rice, whole-grain",rice wholegrain,rice shortgrain,rice wine,fuzzy_matched
+Mungbean sprouts,mungbean sprout,bean chat sprout,bean sprout,fuzzy_matched
+"Tea, ginger",ginger tea,ginger tea,ginger tea,True
+Basil,basil,basil,basil,True
+"Pie, apricot, baked, with cake dough",apricot bake cake dough pie,apricot bake oatmeal spice,,fuzzy_matched
+Light beer,beer light,,beer light,True
+"Lamb, chop",chop lamb,chop lamb,chop lamb,True
+"Rusk, wholemeal",rusk wholemeal,bread wholemeal,,fuzzy_matched
+Coleslaw (chopped without sauce),chop coleslaw sauce without,chocolate sauce turtle,chicken grill sauce wing without,fuzzy_matched
+Mix of dried fruits and nuts,dry fruit mix nut,dry fruit marinate,fruit mix nut trail,fuzzy_matched
+"Beef, roast",beef roast,beef roast,beef roast,True
+"Aperitif, with alcohol, apérol, Spritz",alcohol aperitif apérol spritz,peachaperol spritz,,fuzzy_matched
+Nuts,nut,,nut,True
+"Vanille cream, cooked, Custard, Crème dessert",cook cream crème custard dessert vanille,cream creamy custard ice vanilla,cone cream ice serve soft vanilla,fuzzy_matched
+Tartar sauce,sauce tartar,sauce tartar,sauce tartar,True
+Country fries,country fry,country gravy,beef country fry steak,fuzzy_matched
+"Sauce, carbonara",carbonara sauce,carbonara sauce,,True
+"Rice, Jasmin",jasmin rice,jasmine rice,raisin rice,fuzzy_matched
+Champagne,champagne,champagne grape,champagne punch,fuzzy_matched
+Minced meat,meat mince,meat pie,bean meat rice,fuzzy_matched
+"Carrot, steamed, without addition of salt",addition carrot salt steam without,bean carrot salad sesame sprout,add carrot fat rice white,fuzzy_matched
+Ebly,ebly,,jelly,fuzzy_matched
+"High protein pasta (made of lentils, peas, ...)",high lentil make pasta pea protein,bean fava pasta pea spring,high mix nutritional powder protein,fuzzy_matched
+Veggie burger,burger veggie,burger veggie,,True
+Fish fingers (breaded),bread finger fish,bhorta finger fish,bread irish soda,fuzzy_matched
+Artichoke,artichoke,artichoke,artichoke,True
+Mango dried,dry mango,,dry mango,True
+Coconut,coconut,coconut ice,coconut oil,fuzzy_matched
+Banana cake,banana cake,banana cake,,True
+Waffle,waffle,waffle,waffle,True
+"Apricot, dried",apricot dry,,apricot dry,True
+"Watermelon, fresh",fresh watermelon,french watermelon,watermelon,fuzzy_matched
+"Taboulé, prepared, with couscous",couscous prepare taboulé,couscous israeli tabbouleh,,fuzzy_matched
+Black Forest Tart,black forest tart,black forest tart,,True
+Pearl onions,onion pearl,onion pearl,,True
+Tzatziki,tzatziki,tzatziki,,True
+"Sauce, sweet-salted (asian)",asian sauce sweetsalted,asian dip sauce sweethot,dress pasta sauce vegetable,fuzzy_matched
+Fruit compotes,compote fruit,compote fruit,,True
+"Bread, olive",bread olive,bread olive,,True
+Margarine,margarine,,margarine,True
+Green asparagus,asparagus green,asparagus crepe,asparagus,fuzzy_matched
+Shoots,shoot,b shoot,mushroom,fuzzy_matched
+Pasta in conch form,conch form pasta,corn cream pasta,cook pasta,fuzzy_matched
+"Grapefruit, pomelo",grapefruit pomelo,grapefruit oil,grapefruit,fuzzy_matched
+"Vegetable au gratin, baked",au bake gratin vegetable,bake gratin vegetable,baby grain toddler vegetable,fuzzy_matched
+"Pork, chop",chop pork,chop pork rub,chop pork stuff,fuzzy_matched
+Blackberry,blackberry,,blackberry,True
+"Coffee, decaffeinated",coffee decaffeinate,coffee mcavee,brew coffee decaffeinate,fuzzy_matched
+"Fig, dried",dry fig,,dry fig,True
+Potato-gnocchi,potatognocchi,carrotpotato gnocchi,potato,fuzzy_matched
+Italian salad dressing,dress italian salad,dress italian salad,,True
+"Cake, marble",cake marble,cake marble,,True
+"Sugar, glazing",glaze sugar,basic glaze sugar,sugar,fuzzy_matched
+"Croissant, wholegrain",croissant wholegrain,croissant herb,croissant fruit,fuzzy_matched
+"Tea, fruit",fruit tea,fruit tart,fruit top,fuzzy_matched
+Tartar (meat),meat tartar,beet tartare,steak tartare,fuzzy_matched
+"Curds, natural, with at most 10% fidm",curd fidm natural,dye food natural pink,,fuzzy_matched
+White asparagus,asparagus white,asparagus pie,asparagus,fuzzy_matched
+Peach,peach,,peach,True
+Curd,curd,cure,custard,fuzzy_matched
+Smoked cooked sausage of pork and beef meat sausag,beef cook meat pork sausag sausage smoke,ale potato sauerkraut sausage smoke,beef loaf make meat pork sauce tomatobased,fuzzy_matched
+"Pie, rhubarb, baked, with cake dough",bake cake dough pie rhubarb,bake cheesecake orange rhubarb,,fuzzy_matched
+"Sauce, cocktail",cocktail sauce,cocktail sauce,cocktail sauce,True
+"Tomato, stewed, without addition of fat, without addition of salt",addition addition fat salt stew tomato without without,onion salsa tomato without,,fuzzy_matched
+Buckwheat pancake,buckwheat pancake,buckwheat pancake,,True
+Cherries,cherry,cherry,cherry,True
+Nectarine,nectarine,,nectarine,True
+Figs,fig,,fig,True
+Damson plum,damson plum,damson jam,can plum,fuzzy_matched
+bean seeds,bean seed,bean red,bean refried,fuzzy_matched

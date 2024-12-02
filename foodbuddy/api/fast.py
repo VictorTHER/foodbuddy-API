@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from foodbuddy.KNN.KNN_to_prediction import load_KNN
 from foodbuddy.RNN.RNN_to_prediction import load_RNN
+from foodbuddy.Label_matcher import 
+from foodbuddy.params import *
 
 # Instanciate FastAPI
 app = FastAPI()
@@ -20,6 +22,12 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
+
+reminders available;
+GCP_PROJECT
+GCP_PROJECT_WAGON
+GCP_REGION
+BUCKET_NAME
 
 @app.get("/nutrients")
 def get_nutrients(
