@@ -150,7 +150,7 @@ from foodbuddy.params import *
 #         row_count=len(X_train_processed),
 #     )
 
-#     # Save results on the hard drive using taxifare.ml_logic.registry
+#     # Save results on the hard drive using foodbuddy.ml_logic.registry
 #     save_results(params=params, metrics=dict(mae=val_mae))
 
 #     # Save model weight on the hard drive (and optionally on GCS too!)

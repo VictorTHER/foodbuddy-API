@@ -6,7 +6,7 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-# Only then copy taxifare!
+# Only then copy foodbuddy!
 COPY foodbuddy foodbuddy
 
 # Command to launch the API web server

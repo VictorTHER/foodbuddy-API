@@ -40,4 +40,4 @@ uvicorn
 # tests
 httpx
 pytest-asyncio
-
+gcsfs

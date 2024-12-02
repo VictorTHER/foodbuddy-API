@@ -1,6 +1,6 @@
 import time
 import tracemalloc
-from taxifare.params import *
+from foodbuddy.params import *
 
 def simple_time_and_memory_tracker(method):
 

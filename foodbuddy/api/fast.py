@@ -1,10 +1,16 @@
 import pandas as pd
+import gcsfs
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from foodbuddy.KNN.KNN_to_prediction import load_KNN
+from foodbuddy.RNN.RNN_to_prediction import load_RNN
 
-
+# Instanciate FastAPI
 app = FastAPI()
-app.state.model = load_model()
+
+# Load both models
+app.state.knn_model = load_KNN()
+app.state.rnn_model = load_RNN()
 
 # Allowing all middleware is optional, but good practice for dev purposes
 app.add_middleware(
