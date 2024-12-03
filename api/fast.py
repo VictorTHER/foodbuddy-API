@@ -20,9 +20,10 @@ from foodbuddy.Label_matcher.Ingredients_list_setup import download_ingredients_
 from foodbuddy.params import *
 
 
+
 ### STEP 2: SETUP API ###
 
-# Prepare "UserInputs" class to handle
+# Prepare "UserInputs" class to handle daily needs calculation
 class UserInputs(BaseModel):
     age: int
     gender: str
@@ -30,16 +31,7 @@ class UserInputs(BaseModel):
     height: float
     activity_level: str
 
-activity_multipliers = {
-    "Sedentary (little or no exercise)": 1.2,
-    "Lightly active (light exercise/sports 1-3 days/week)": 1.375,
-    "Moderately active (moderate exercise/sports 3-5 days/week)": 1.55,
-    "Very active (hard exercise/sports 6-7 days a week)": 1.725,
-    "Super active (very hard exercise/physical job)": 1.9,
-}
-
-## STEP 1: SET UP DF DOWNLOADS ###
-
+# lifespan = set up downloads of data+models when turning API on!
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
@@ -65,7 +57,8 @@ async def lifespan(app: FastAPI):
     del app.state.rnn_model
 
 
-## STEP 2: INSTANCIATE API AND PULL MODELS ###
+
+## STEP 3: INSTANCIATE API ###
 
 # Instanciate FastAPI with lifespan handler
 app = FastAPI(lifespan=lifespan)
@@ -80,8 +73,20 @@ app.add_middleware(
 )
 
 
+
+### STEP 4: MAKE ENDPOINTS! ###
+
+# Calculate user daily needs df using form
 @app.post("/calculate-daily-needs")
 def calculate_daily_needs(user: UserInputs):
+    activity_multipliers = {
+        "Sedentary (little or no exercise)": 1.2,
+        "Lightly active (light exercise/sports 1-3 days/week)": 1.375,
+        "Moderately active (moderate exercise/sports 3-5 days/week)": 1.55,
+        "Very active (hard exercise/sports 6-7 days a week)": 1.725,
+        "Super active (very hard exercise/physical job)": 1.9,
+    }
+
     # Validate gender
     if user.gender not in ["Male", "Female"]:
         raise HTTPException(status_code=400, detail="Invalid gender value")
@@ -152,48 +157,45 @@ def calculate_daily_needs(user: UserInputs):
     }
 
 
-
-### STEP 3: GET NUTRIENTS WITH A RECIPE NAME ###
-# TEST: http://127.0.0.1:8000/nutrients?recipe=banana%20bread
-@app.get("/nutrients")
-def get_nutrients(recipe: str):
+# RNN predict dish
+@app.post("/analyze-image")
+async def analyze_image_endpoint(file: UploadFile = File(...)):
     """
-    Get nutrients for a given recipe.
+    Upload .jpeg photo
+    Analyze with model
+    Output result of model analysis
     """
-    # Get data (already up with API :)
-    df = app.state.recipes
+    def analyze_image(image: bytes):
+        """
+        Input .jpg image
+        Analyze an image using the RNN model.
+        Return the result of the RNN model analysis.
+        """
+        # Step 1: Ensure the RNN model is loaded
+        rnn_model = app.state.rnn_model
 
-    # Save to nutrients in a JSON/API compatible format (orient="records")
-    nutrients = df[df["recipe"].str.lower() == recipe.lower()].to_dict(orient="records")
+        # Step 2: Run the image through the RNN model
+        try:
+            prediction = rnn_model.predict(image)
+        except Exception as e:
+            return {"error": f"Model prediction failed: {str(e)}"}
 
-    if not nutrients:
-        return {"message": "Recipe not found"}
+        # Step 3: Format and return the output
+        return {"prediction": prediction.tolist()}
 
-    return {"nutrients": nutrients}
+    try:
+        # Read the image file as bytes
+        image_bytes = await file.read()
 
+        # Call the analyze_image function
+        result = analyze_image(image_bytes)
 
-def query_recipes(recipe_names: list):
-    """
-    Query the recipes database using a list of recipe names.
-
-    Args:
-        recipe_names (list): List of recipe names.
-
-    Returns:
-        dict: A dictionary containing the matched recipes.
-    """
-    # Get the recipes DataFrame from the API state
-    recipes_df = app.state.recipes
-
-    # Query the DataFrame using the recipe names
-    filtered_recipes = recipes_df[recipes_df["recipe"].isin(recipe_names)]
-
-    # Convert the filtered DataFrame to a JSON-compatible format
-    results = filtered_recipes.to_dict(orient="records")
-
-    return {"recipes": results}
+        return result
+    except Exception as e:
+        return {"error": f"Image analysis failed: {str(e)}"}
 
 
+# KNN predict 10 recipes for a given filled form
 @app.post("/knn-recipes")
 def knn_recipes(nutrient_values: list):
     """
@@ -201,6 +203,26 @@ def knn_recipes(nutrient_values: list):
     Output a JSON dict with 10 nearest recipes and details
 
     """
+    def query_recipes(recipe_names: list):
+        """
+        Query the recipes database using a list of recipe names.
+
+        Args:
+            recipe_names (list): List of recipe names.
+
+        Returns:
+            dict: A dictionary containing the matched recipes.
+        """
+        # Get the recipes DataFrame from the API state
+        recipes_df = app.state.recipes
+
+        # Query the DataFrame using the recipe names
+        filtered_recipes = recipes_df[recipes_df["recipe"].isin(recipe_names)]
+
+        # Convert the filtered DataFrame to a JSON-compatible format
+        results = filtered_recipes.to_dict(orient="records")
+
+        return {"recipes": results}
 
     remaining_nutrients = XXX
 
@@ -224,46 +246,30 @@ def knn_recipes(nutrient_values: list):
     return queried_recipes
 
 
-def analyze_image(image: bytes):
+
+# Get nutrients for a given recipe
+# TEST: http://127.0.0.1:8000/nutrients?recipe=banana%20bread
+@app.get("/nutrients")
+def get_nutrients(recipe: str):
     """
-    Input .jpg image
-    Analyze an image using the RNN model.
-    Return the result of the RNN model analysis.
+    Get nutrients for a given recipe.
     """
-    # Step 1: Ensure the RNN model is loaded
-    rnn_model = app.state.rnn_model
+    # Get data (already up with API :)
+    df = app.state.recipes
 
-    # Step 2: Run the image through the RNN model
-    try:
-        prediction = rnn_model.predict(image)
-    except Exception as e:
-        return {"error": f"Model prediction failed: {str(e)}"}
+    # Save to nutrients in a JSON/API compatible format (orient="records")
+    nutrients = df[df["recipe"].str.lower() == recipe.lower()].to_dict(orient="records")
 
-    # Step 3: Format and return the output
-    return {"prediction": prediction.tolist()}
+    if not nutrients:
+        return {"message": "Recipe not found"}
+
+    return {"nutrients": nutrients}
 
 
-@app.post("/analyze-image")
-async def analyze_image_endpoint(file: UploadFile = File(...)):
-    """
-    Upload .jpeg photo
-    Analyze with model
-    Output result of model analysis
-    """
-    try:
-        # Read the image file as bytes
-        image_bytes = await file.read()
-
-        # Call the analyze_image function
-        result = analyze_image(image_bytes)
-
-        return result
-    except Exception as e:
-        return {"error": f"Image analysis failed: {str(e)}"}
-
+# API health checker
 @app.get("/")
 def root():
     """
     Test endpoint to verify the API is running.
     """
-    return {"message": "Welcome to the Nutrients API"}
+    return {"message": "API is up and running :) "}
