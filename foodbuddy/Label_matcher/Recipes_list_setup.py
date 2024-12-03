@@ -453,3 +453,4 @@ def download_recipes_df():
 
     # Return df
     return pd.read_csv(StringIO(content))
+

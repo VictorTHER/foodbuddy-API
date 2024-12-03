@@ -4,8 +4,12 @@ reinstall_package:
 	@pip uninstall -y foodbuddy || :
 	@pip install -e .
 
+
+run_streamlit:
+	streamlit run website/app.py
+
 run_api:
-	uvicorn foodbuddy.api.fast:app --reload
+	uvicorn api.fast:app --reload
 
 ##################### TESTS #####################
 test_gcp_setup:

@@ -43,7 +43,7 @@ def preprocessing():
     scaler=StandardScaler()
     X_scaled = scaler.fit_transform(X)
     print('Successfully preprocessed the recipe/nutrient data')
-    return X_scaled,y,scaler,data
+    return X_scaled,y,scaler
 
 ## Weighting the nutrients over their importance
 def weighting_nutrients(X_scaled,weights=None):
@@ -73,6 +73,7 @@ def KNN_model(X_weighted,y):
     KNN_regressor_model.fit(X_weighted, y)
     print('Successfully intialized and trained the KNN model')
     return KNN_regressor_model
+
 
 def load_user_data(scaler:StandardScaler,recommended_intake=None,consumed_intake=None):
     """
@@ -105,6 +106,7 @@ def load_user_data(scaler:StandardScaler,recommended_intake=None,consumed_intake
 
     print('Successfully loaded and weighted the user nutritional data')
     return X_remaining_weighted
+
 
 def predict_KNN_model(KNN_regressor_model:KNeighborsRegressor,X_remaining_weighted):
     """Prediction and Nutrition calculation"""
@@ -148,8 +150,33 @@ def run_KNN_workflow():
     return y_pred, recommended_recipes_names
 
 
+import pickle
+import os
+pickle_path = "foodbuddy/KNN/knn_and_scaler.pkl"
+
+def save_KNN():
+    X_scaled,y,scaler=preprocessing()
+    X_weighted=weighting_nutrients(X_scaled)
+    knn=KNN_model(X_weighted,y)
+
+    # Save both the model and scaler as a dictionary
+    with open(pickle_path, "wb") as file:
+        pickle.dump({"model": knn, "scaler": scaler}, file)
+
 def load_KNN():
-    pass
+
+    # Check if the pickle file exists
+    if not os.path.exists(pickle_path):
+        print("Pickle file not found. Generating a new KNN model and scaler...")
+        save_KNN()
+
+    # Load the model and scaler
+    with open(pickle_path, "rb") as file:
+        data = pickle.load(file)
+        loaded_model = data["model"]
+        loaded_scaler = data["scaler"]
+
+    return loaded_model, loaded_scaler
 
 # y_pred, recommended_recipe_names=run_KNN_workflow()
 # print(recommended_recipe_names)
