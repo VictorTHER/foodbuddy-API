@@ -6,8 +6,6 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-from PIL import Image
-import io
 
 # Import functions
 from foodbuddy.KNN.KNN_to_predictions import load_KNN, weighting_nutrients
@@ -224,16 +222,14 @@ def knn_recipes(nutrient_values: list):
 
         return {"recipes": results}
 
-    remaining_nutrients = XXX
-
     # Sdddames
     knn_model = app.state.knn_model
     knn_scaler = app.state.knn_scaler
 
-    remaining_nutrients_scaled = knn_scaler.fit_transform(remaining_nutrients)
-    remaining_nutrients_weighted = weighting_nutrients(remaining_nutrients)
+    nutrient_values_scaled = knn_scaler.fit_transform(nutrient_values)
+    nutrient_values_weighted = weighting_nutrients(nutrient_values_scaled)
 
-    distances, indices = knn_model.kneighbors([remaining_nutrients_weighted], n_neighbors=10)
+    distances, indices = knn_model.kneighbors([nutrient_values_weighted], n_neighbors=10)
     recipe_names = app.state.recipes.iloc[indices[0]]["recipe"].tolist()
 
     # Step 3: Query the recipes database using the names

@@ -17,6 +17,7 @@ MLFLOW_DL_NAME = os.environ.get("MLFLOW_DL_NAME")
 
 GAR_IMAGE = os.environ.get("GAR_IMAGE")
 GAR_MEMORY = os.environ.get("GAR_MEMORY")
+SERVICE_URL = os.environ.get("SERVICE_URL")
 
 ##################  CONSTANTS  #####################
 LOCAL_DATA_PATH = os.path.join(os.path.expanduser('~'), ".lewagon", "mlops", "data")
