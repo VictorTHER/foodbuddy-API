@@ -20,7 +20,6 @@ from foodbuddy.Label_matcher.Ingredients_list_setup import download_ingredients_
 from foodbuddy.params import *
 
 
-
 ### STEP 2: Setup API ###
 
 # Prepare "UserInputs" class to handle
