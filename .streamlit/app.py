@@ -6,9 +6,9 @@ import toml
 import time
 import random
 
+
 # Access the variable from st.secrets
 SERVICE_URL = st.secrets["general"]["SERVICE_URL"]
-st.write("My Variable:", SERVICE_URL)
 
 ### FUNCTIONS AND VARIABLES ###
 
@@ -63,11 +63,10 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.text("Welcome to FoodBuddy™! Our unique model can analize your meal and let you know its nutritional intake.")
-st.text(f"Service URL is: {SERVICE_URL}")
 
 
 # Food picture
-st.image("website/HealthyMeal.jpg", caption="Healthy Meal!")
+st.image(".streamlit/HealthyMeal.jpg", caption="Healthy Meal!")
 
 ### STEP 1: USER DETAILS FORM ###
 st.header("Step 1: Personal Details")
@@ -189,19 +188,12 @@ else:
 
         # Placeholder: Replace with actual RNN output
         # rnn_output = st.session_state.get("RNN_result", [20, 15, 30, 40, 25, 10, 5, 15, 10, 10])  # Mock RNN output
-        rnn_output = [20, 15, 30, 40, 25, 10, 5, 15, 10, 10]
+        rnn_output = [180, 10, 70, 800, 15, 300, 1400, 60, 5, 500]
 
         # Compute the difference (remaining nutrients needed)
         nutrient_difference = [max(0, user - rnn) for user, rnn in zip(user_nutrient_values, rnn_output)]
 
-        # Display debug information
-        st.subheader("Debug Information")
-        st.write("**User Nutrient Values:**", user_nutrient_values)
-        st.write("**RNN Output (Predicted Nutrients):**", rnn_output)
-        st.write("**Nutrient Difference (Remaining Needs):**", nutrient_difference)
-
         # Call the KNN API
-        api_url = SERVICE_URL
         api_url = f"{SERVICE_URL}/knn-recipes"
         payload = {"nutrient_values": nutrient_difference}
         response = requests.post(api_url, json=payload)
@@ -209,7 +201,6 @@ else:
         # Display the results
         if response.status_code == 200:
             knn_results = response.json()
-
             st.subheader("Recommended Recipes")
             for recipe in knn_results["recipes"]:
                 st.markdown(f"- **{recipe['recipe']}** (Distance: {recipe['distance']})")

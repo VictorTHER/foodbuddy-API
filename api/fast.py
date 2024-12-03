@@ -4,6 +4,7 @@
 import pandas as pd
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from pydantic import BaseModel
+from typing import List
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
@@ -28,6 +29,10 @@ class UserInputs(BaseModel):
     weight: float
     height: float
     activity_level: str
+
+# Prepare "NutrientValues" class to handle KNN calculations
+class NutrientValues(BaseModel):
+    nutrient_values: List[float]  # Ensure a list of floats is expected
 
 # lifespan = set up downloads of data+models when turning API on!
 @asynccontextmanager
@@ -195,52 +200,38 @@ async def analyze_image_endpoint(file: UploadFile = File(...)):
 
 # KNN predict 10 recipes for a given filled form
 @app.post("/knn-recipes")
-def knn_recipes(nutrient_values: list):
+def knn_recipes(payload: NutrientValues):
     """
     Input a list of 10 nutrient values
     Output a JSON dict with 10 nearest recipes and details
-
     """
+    nutrient_values = payload.nutrient_values  # Extract nutrient values from the payload
+
     def query_recipes(recipe_names: list):
-        """
-        Query the recipes database using a list of recipe names.
-
-        Args:
-            recipe_names (list): List of recipe names.
-
-        Returns:
-            dict: A dictionary containing the matched recipes.
-        """
         # Get the recipes DataFrame from the API state
         recipes_df = app.state.recipes
-
-        # Query the DataFrame using the recipe names
         filtered_recipes = recipes_df[recipes_df["recipe"].isin(recipe_names)]
-
-        # Convert the filtered DataFrame to a JSON-compatible format
         results = filtered_recipes.to_dict(orient="records")
-
         return {"recipes": results}
 
-    # Sdddames
+    # Access KNN model and scaler
     knn_model = app.state.knn_model
     knn_scaler = app.state.knn_scaler
 
-    nutrient_values_scaled = knn_scaler.fit_transform(nutrient_values)
+    # Process the input
+    nutrient_values_scaled = knn_scaler.transform([nutrient_values])  # Use transform instead of fit_transform
     nutrient_values_weighted = weighting_nutrients(nutrient_values_scaled)
 
-    distances, indices = knn_model.kneighbors([nutrient_values_weighted], n_neighbors=10)
+    # Get the nearest neighbors
+    distances, indices = knn_model.kneighbors(nutrient_values_weighted, n_neighbors=10)
     recipe_names = app.state.recipes.iloc[indices[0]]["recipe"].tolist()
 
-    # Step 3: Query the recipes database using the names
+    # Query recipes and add distances
     queried_recipes = query_recipes(recipe_names)
-
-    # Step 4: Add distances to the queried recipes for Streamlit
     for i, recipe in enumerate(queried_recipes["recipes"]):
-        recipe["distance"] = round(distances[0][i], 4)  # Include distance as a field
+        recipe["distance"] = round(distances[0][i], 4)
 
     return queried_recipes
-
 
 
 # Get nutrients for a given recipe
