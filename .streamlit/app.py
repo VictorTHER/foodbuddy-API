@@ -30,28 +30,6 @@ def call_calculate_api(user_inputs):
         st.error(f"Failed to fetch daily needs. Status code: {response.status_code}")
         return None
 
-# Add a function to call the FastAPI endpoint for combined analysis
-def call_combined_api(image, df):
-    """
-    Calls the FastAPI /analyze-combined endpoint with the uploaded image and DataFrame.
-
-    Args:
-        image (BytesIO): The image file.
-        df (pd.DataFrame): The DataFrame with nutrient details.
-
-    Returns:
-        dict: API response with analysis results.
-    """
-    api_url = f"{SERVICE_URL}/analyze-combined"
-    files = {"file": image}
-    data = {"nutrients": df.to_dict()}  # Serialize DataFrame as dictionary
-    response = requests.post(api_url, files=files, json=data)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        return {"error": f"Failed to process data. Status code: {response.status_code}"}
-
-
 ### TITLE AND DESCRIPTION ###
 
 st.markdown(
@@ -124,55 +102,67 @@ with col1:
     # Create a placeholder for the upload button
     upload_placeholder = st.empty()
     uploaded_file = st.file_uploader("Upload a photo of your meal", type=["jpg", "png", "jpeg"])
+    api_url = f"{SERVICE_URL}/analyze-image"
 
     if uploaded_file:
-        if st.session_state.get("daily_needs_ok", False):
-            st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
-            with st.spinner("Analyzing your image..."):
-                result = call_combined_api(uploaded_file, st.session_state["df"])
-                st.session_state["RNN_result"] = result
-
-            if "error" in result:
-                st.error(result["error"])
-            else:
-                st.success("Analysis complete!")
-        else :
-            st.error("Please fill in personal info to get a personalized nutrients analysis.")
+        st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
 
 with col2:
-    st.text("Processing Status")
+    st.subheader("Processing Status")
+
     if uploaded_file and st.session_state.get("daily_needs_ok", False):
-        # Placeholder for cumulative updates
-        status_placeholder = st.empty()
+        # Proceed with image analysis
+        with st.spinner("Analyzing your image..."):
+            try:
+                # Ensure the file content is sent to the API
+                files = {"file": uploaded_file.getvalue()}
+                response = requests.post(api_url, files=files)
 
-        # List to store messages
-        status_messages = []
+                if response.status_code == 200:
+                    result = response.json()
 
-        # Simulate processing steps with random delays
-        steps = [
-            "Analyzing your meal...",
-            "Identifying ingredients...",
-            "Checking nutritional value...",
-            "Recommending recipes...",
-            "Finalizing results...",
-        ]
+                    if "error" in result:
+                        st.error(f"Error: {result['error']}")
+                    else:
+                        st.success("Image successfully analyzed!")
+                        st.write("Prediction:", result["prediction"])
+                else:
+                    st.error(f"API call failed with status code {response.status_code}")
+            except Exception as e:
+                st.error(f"An error occurred: {str(e)}")
+    elif not st.session_state.get("daily_needs_ok", False):
+        st.error("Please fill in personal info to get a personalized nutrients analysis.")
 
-        for step in steps:
-            # Simulate a random delay
-            time.sleep(random.uniform(0, 5))
+    status_placeholder = st.empty()
 
-            # Add the new step to the list of messages
-            status_messages.append(f"✅ {step}")
+    # List to store messages
+    status_messages = []
 
-            # Add line breaks and update placeholder
-            formatted_messages = "<br>".join(status_messages)
-            status_placeholder.markdown(
-                f"<div style='line-height: 1.8;'>{formatted_messages}</div>",
-                unsafe_allow_html=True,
-            )
+    # Simulate processing steps with random delays
+    steps = [
+        "Analyzing your meal...",
+        "Identifying ingredients...",
+        "Checking nutritional value...",
+        "Recommending recipes...",
+        "Finalizing results...",
+    ]
 
-        # Final success message
-        st.json(result)
+    for step in steps:
+        # Simulate a random delay
+        time.sleep(random.uniform(0, 5))
+
+        # Add the new step to the list of messages
+        status_messages.append(f"✅ {step}")
+
+        # Add line breaks and update placeholder
+        formatted_messages = "<br>".join(status_messages)
+        status_placeholder.markdown(
+            f"<div style='line-height: 1.8;'>{formatted_messages}</div>",
+            unsafe_allow_html=True,
+        )
+
+    # Final success message
+    st.json(result)
 
 
 ### STEP 3: KNN ###

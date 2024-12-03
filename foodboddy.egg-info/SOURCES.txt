@@ -6,9 +6,13 @@ README.md
 requirements.txt
 requirements_prod.txt
 setup.py
+.streamlit/HealthyMeal.jpg
+.streamlit/app.py
 __pycache__/setapi.cpython-310.pyc
 api/__init__.py
 api/fast.py
+api/__pycache__/__init__.cpython-310.pyc
+api/__pycache__/fast.cpython-310.pyc
 foodboddy.egg-info/PKG-INFO
 foodboddy.egg-info/SOURCES.txt
 foodboddy.egg-info/dependency_links.txt
@@ -18,6 +22,7 @@ foodboddy.egg-info/top_level.txt
 foodbuddy/__init__.py
 foodbuddy/params.py
 foodbuddy/utils.py
+foodbuddy/KNN/KNN_model.py
 foodbuddy/KNN/KNN_preprocess.py
 foodbuddy/KNN/KNN_to_predictions.py
 foodbuddy/KNN/__init__.py
@@ -44,11 +49,6 @@ foodbuddy/Label_matcher/cache/cleaned_ingredients_list.csv
 foodbuddy/Label_matcher/cache/cleaned_ingredients_with_nutrients.csv
 foodbuddy/Label_matcher/cache/cleaned_recipes_list.csv
 foodbuddy/Label_matcher/cache/cleaned_recipes_with_nutrients.csv
-foodbuddy/RNN/RNN_preprocess.py
-foodbuddy/RNN/RNN_to_prediction.py
-foodbuddy/RNN/__init__.py
-foodbuddy/RNN/__pycache__/RNN_to_prediction.cpython-310.pyc
-foodbuddy/RNN/__pycache__/__init__.cpython-310.pyc
 foodbuddy/__pycache__/__init__.cpython-310.pyc
 foodbuddy/__pycache__/params.cpython-310.pyc
 foodbuddy/__pycache__/utils.cpython-310.pyc

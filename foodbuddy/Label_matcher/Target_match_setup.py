@@ -29,6 +29,7 @@ cache_3 = "Label_matcher/cache/cache_3.csv"
 cleaned_ingredients_list = "Label_matcher/cache/cleaned_ingredients_list.csv"
 cleaned_recipes_list = "Label_matcher/cache/cleaned_recipes_list.csv"
 
+
 def clean_text(series):
     lemmatizer = WordNetLemmatizer()
     stop_words = set(stopwords.words('english'))

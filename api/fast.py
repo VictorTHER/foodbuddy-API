@@ -3,6 +3,9 @@
 # Import packages
 import pandas as pd
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from PIL import Image
+import os
+from io import BytesIO
 from pydantic import BaseModel
 from typing import List
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,10 +13,12 @@ from contextlib import asynccontextmanager
 
 # Import functions
 from foodbuddy.KNN.KNN_to_predictions import load_KNN, weighting_nutrients
-from foodbuddy.RNN.RNN_to_prediction import load_RNN
+from foodbuddy.RNN.load_RNN import load_RNN
+from foodbuddy.RNN.Image_preproc import full_pipeline
 from foodbuddy.Label_matcher.Target_match_setup import download_targets_df
 from foodbuddy.Label_matcher.Recipes_list_setup import download_recipes_df
 from foodbuddy.Label_matcher.Ingredients_list_setup import download_ingredients_df
+
 
 # Import parameters (API URL, etc.)
 from foodbuddy.params import *
@@ -164,36 +169,39 @@ def calculate_daily_needs(user: UserInputs):
 @app.post("/analyze-image")
 async def analyze_image_endpoint(file: UploadFile = File(...)):
     """
-    Upload .jpeg photo
-    Analyze with model
+    Upload .jpg photo
+    Analyze with model after preprocessing pipeline
     Output result of model analysis
     """
-    def analyze_image(image: bytes):
-        """
-        Input .jpg image
-        Analyze an image using the RNN model.
-        Return the result of the RNN model analysis.
-        """
-        # Step 1: Ensure the RNN model is loaded
-        rnn_model = app.state.rnn_model
-
-        # Step 2: Run the image through the RNN model
-        try:
-            prediction = rnn_model.predict(image)
-        except Exception as e:
-            return {"error": f"Model prediction failed: {str(e)}"}
-
-        # Step 3: Format and return the output
-        return {"prediction": prediction.tolist()}
-
     try:
-        # Read the image file as bytes
-        image_bytes = await file.read()
+        # Save uploaded file as a temporary file
+        temp_dir = "temp_images"
+        os.makedirs(temp_dir, exist_ok=True)
+        temp_path = os.path.join(temp_dir, file.filename)
 
-        # Call the analyze_image function
-        result = analyze_image(image_bytes)
+        with open(temp_path, "wb") as temp_file:
+            temp_file.write(await file.read())
 
-        return result
+        # Run the image through the preprocessing pipeline
+        img = Image.open(temp_path)
+
+        # Preprocess: Resize to 224x224, convert to RGB, normalize
+        if img.mode != "RGB":
+            img = img.convert("RGB")
+        img = img.resize((224, 224))
+        img_array = np.array(img) / 255.0  # Normalize to [0, 1]
+        img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+
+        # Run the preprocessed image through the RNN model
+        # rnn_model = app.state.rnn_model # TEMPORARY
+        # prediction = rnn_model.predict(img_array)
+
+        # Clean up temporary files
+        os.remove(temp_path)
+
+        # Return prediction
+        # return {"prediction": prediction.tolist()}
+        return {"prediction": ["gyoza"]}
     except Exception as e:
         return {"error": f"Image analysis failed: {str(e)}"}
 
