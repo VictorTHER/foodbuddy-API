@@ -126,3 +126,6 @@ def predict_KNN_model():
         recommended_recipes_names.append(y.loc[recipe_index]['recipe']) # Generating the list of recipe names by matching order for later use
     return y_pred, recommended_recipes_names
     # return y_pred
+
+
+load_KNN()

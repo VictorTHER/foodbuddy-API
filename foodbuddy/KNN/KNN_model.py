@@ -77,11 +77,10 @@ def KNN_model():
     """
     # Running the previous functions
     X_scaled,y,scaler=preprocessing()
-    X_weighted=weighting_nutrients(X_scaled)
 
     # Model initialization and fitting
     model = KNeighborsRegressor(n_neighbors=10)
-    model.fit(X_weighted, y)
+    model.fit(X_scaled, y)
     print('Successfully intialized and trained the KNN model')
 
     # Saving the fitted model into a .pkl file

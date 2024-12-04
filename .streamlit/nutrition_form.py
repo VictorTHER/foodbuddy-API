@@ -6,7 +6,13 @@ import pandas as pd
 SERVICE_URL = st.secrets["general"]["SERVICE_URL"]
 
 def nutrition_form():
-    st.title("Step 1: Calculate Your Daily Needs")
+
+    # Add a "Go Back" button to navigate to the previous page
+    if st.button("Go Back"):
+        st.session_state["page"] = "homepage"
+        st.experimental_rerun()
+
+    st.title("Calculate Your Daily Needs")
     st.markdown("Fill in your details below:")
 
     # Collect user inputs
@@ -15,7 +21,7 @@ def nutrition_form():
     weight = st.number_input("Weight (kg)", min_value=1, max_value=200, step=1)
     height = st.number_input("Height (cm)", min_value=50, max_value=250, step=1)
 
-    st.header("Activity Level")
+    st.subheader("Activity Level")
     activity_level = st.selectbox(
         "Choose your activity level",
         [
@@ -45,6 +51,8 @@ def nutrition_form():
                     result = response.json()
                 else:
                     st.error(f"Failed to fetch daily needs. Status code: {response.status_code}")
+                    return
+
                 if result:
                     bmr = result["bmr"]
                     daily_caloric_needs = result["daily_caloric_needs"]
@@ -52,17 +60,17 @@ def nutrition_form():
 
                     st.subheader("Your Daily Nutritional Intake")
                     st.write(f"**Base Metabolic Rate (BMR):** {bmr} kcal/day")
-                    # st.write(f"**Total Daily Caloric Needs:** {daily_caloric_needs} kcal/day")
                     st.dataframe(df[["Nutrient", "Your Daily Intake", "Description"]])
 
                     # Store the result in session state for navigation
                     st.session_state["df"] = df
                     st.session_state["daily_needs_ok"] = True
-                    st.session_state["page"] = "meal_analysis"
 
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
 
-    # Add a "Go Back" button to navigate to the previous page
-    if st.button("Go Back"):
-        st.session_state["page"] = "homepage"
+    # Display "Scan my plate" button if daily needs are calculated
+    if st.session_state.get("daily_needs_ok", False):
+        if st.button("Scan my plate"):
+            st.session_state["page"] = "meal_analysis"
+            st.experimental_rerun()

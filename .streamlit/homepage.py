@@ -15,3 +15,4 @@ def homepage():
 
     if st.button("Next"):
         st.session_state["page"] = "nutrition_form"
+        st.experimental_rerun()

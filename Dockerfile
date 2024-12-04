@@ -6,8 +6,8 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-# Only then copy foodbuddy!
-COPY foodbuddy foodbuddy
+# Copy the entire project (including `api` and `foodbuddy`)
+COPY . .
 
 # Command to launch the API web server
-CMD uvicorn foodbuddy.api.fast:app --host 0.0.0.0 --port $PORT
+CMD uvicorn api.fast:app --host 0.0.0.0 --port $PORT

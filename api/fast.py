@@ -46,7 +46,8 @@ async def lifespan(app: FastAPI):
     """
     # Load data
     targets_df = download_targets_df()
-    app.state.targets = targets_df["recipe"].tolist()
+    app.state.targets = targets_df
+    app.state.target = targets_df["recipe"].tolist()
     app.state.nutrients = targets_df.drop(columns=["recipe"])
 
     app.state.recipes = download_recipes_df()
@@ -60,6 +61,7 @@ async def lifespan(app: FastAPI):
     yield
 
     # Shutdown: Cleanup things!
+    del app.state.target
     del app.state.targets
     del app.state.nutrients
     del app.state.recipes
@@ -207,7 +209,7 @@ async def analyze_image_endpoint(file: UploadFile = File(...)):
         print(max_probability)
 
         # Use app.state.targets for mapping
-        recipe_name = app.state.targets[max_index]
+        recipe_name = app.state.target[max_index]
 
         # Clean up temporary files
         os.remove(temp_path)
@@ -258,7 +260,7 @@ def knn_recipes(payload: NutrientValues):
 
 # Get nutrients for a given recipe
 # TEST: http://127.0.0.1:8000/nutrients?recipe=banana%20bread
-@app.get("/nutrients")
+@app.get("/rnutrients")
 def get_nutrients(recipe: str):
     """
     Get nutrients for a given recipe.
@@ -274,6 +276,22 @@ def get_nutrients(recipe: str):
 
     return {"nutrients": nutrients}
 
+# Get nutrients for a given target
+@app.get("/tnutrients")
+def get_nutrients(recipe: str):
+    """
+    Get nutrients for a given target.
+    """
+    # Get data (already up with API :)
+    df = app.state.targets
+
+    # Save to nutrients in a JSON/API compatible format (orient="records")
+    nutrients = df[df["recipe"].str.lower() == recipe.lower()].to_dict(orient="records")
+
+    if not nutrients:
+        return {"message": "Recipe not found"}
+
+    return {"nutrients": nutrients}
 
 # API health checker
 @app.get("/")
@@ -282,5 +300,5 @@ def root():
     Test endpoint to verify the API is running.
     """
     return {"message": "API is up and running :) ",
-            "target length": len(app.state.targets),
-            "target look":app.state.targets}
+            "target length": len(app.state.target),
+            "target look":app.state.target}
