@@ -1,34 +1,11 @@
 import streamlit as st
 import pandas as pd
 import requests
-from PIL import Image
-import toml
-import time
-import random
 
 
 # Access the variable from st.secrets
 SERVICE_URL = st.secrets["general"]["SERVICE_URL"]
 
-### FUNCTIONS AND VARIABLES ###
-
-def call_calculate_api(user_inputs):
-    """
-    Call the FastAPI /calculate-daily-needs endpoint with user inputs.
-
-    Args:
-        user_inputs (dict): Dictionary with user input values.
-
-    Returns:
-        dict: API response with BMR, daily caloric needs, and nutrients DataFrame.
-    """
-    api_url = f"{SERVICE_URL}/calculate-daily-needs"
-    response = requests.post(api_url, json=user_inputs)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        st.error(f"Failed to fetch daily needs. Status code: {response.status_code}")
-        return None
 
 ### TITLE AND DESCRIPTION ###
 
@@ -77,19 +54,30 @@ if st.button("Calculate your daily needs!"):
         "activity_level": activity_level,
     }
     with st.spinner("Calculating..."):
-        result = call_calculate_api(user_inputs)
-        if result:
-            bmr = result["bmr"]
-            daily_caloric_needs = result["daily_caloric_needs"]
-            df = pd.DataFrame(result["nutrients"])
+        try:
+            # Ensure the file content is sent to the API
+            api_url = f"{SERVICE_URL}/calculate-daily-needs"
+            response = requests.post(api_url, json=user_inputs)
+            if response.status_code == 200:
+                result = response.json()
+            else:
+                st.error(f"Failed to fetch daily needs. Status code: {response.status_code}")
+            if result:
+                bmr = result["bmr"]
+                daily_caloric_needs = result["daily_caloric_needs"]
+                df = pd.DataFrame(result["nutrients"])
 
-            st.subheader("Your Daily Nutritional Intake")
-            st.write(f"**Base Metabolic Rate (BMR):** {bmr} kcal/day")
-            # st.write(f"**Total Daily Caloric Needs:** {daily_caloric_needs} kcal/day")
-            st.dataframe(df[["Nutrient", "Your Daily Intake", "Description"]])
+                st.subheader("Your Daily Nutritional Intake")
+                st.write(f"**Base Metabolic Rate (BMR):** {bmr} kcal/day")
+                # st.write(f"**Total Daily Caloric Needs:** {daily_caloric_needs} kcal/day")
+                st.dataframe(df[["Nutrient", "Your Daily Intake", "Description"]])
 
-            st.session_state["df"] = df
-            st.session_state["daily_needs_ok"] = True
+                st.session_state["df"] = df
+                st.session_state["daily_needs_ok"] = True
+        except Exception as e:
+            st.error(f"An error occurred: {str(e)}")
+
+
 
 
 ### STEP 2: PHOTO UPLOAD ###
@@ -102,10 +90,9 @@ with col1:
     # Create a placeholder for the upload button
     upload_placeholder = st.empty()
     uploaded_file = st.file_uploader("Upload a photo of your meal", type=["jpg", "png", "jpeg"])
-    api_url = f"{SERVICE_URL}/analyze-image"
 
     if uploaded_file:
-        st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
+        st.image(uploaded_file, caption="Uploaded Image")
 
 with col2:
     st.subheader("Processing Status")
@@ -114,8 +101,9 @@ with col2:
         # Proceed with image analysis
         with st.spinner("Analyzing your image..."):
             try:
-                # Ensure the file content is sent to the API
+                # Send file to API
                 files = {"file": uploaded_file.getvalue()}
+                api_url = f"{SERVICE_URL}/analyze-image"
                 response = requests.post(api_url, files=files)
 
                 if response.status_code == 200:
@@ -125,44 +113,49 @@ with col2:
                         st.error(f"Error: {result['error']}")
                     else:
                         st.success("Image successfully analyzed!")
-                        st.write("Prediction:", result["prediction"])
+                        st.write("**Prediction:**")
+                        st.write(f"Recipe Name: {result['predicted_recipe_name']}")
+                        st.write(f"Recipe Index: {result['predicted_recipe_index']}")
+                        st.write(f"Confidence: {result['probability']:.2%}")
                 else:
                     st.error(f"API call failed with status code {response.status_code}")
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
+
+
+
+
     elif not st.session_state.get("daily_needs_ok", False):
         st.error("Please fill in personal info to get a personalized nutrients analysis.")
 
-    status_placeholder = st.empty()
+# if uploaded_file and st.session_state.get("daily_needs_ok", False):
+#     status_placeholder = st.empty()
 
-    # List to store messages
-    status_messages = []
+#     # List to store messages
+#     status_messages = []
 
-    # Simulate processing steps with random delays
-    steps = [
-        "Analyzing your meal...",
-        "Identifying ingredients...",
-        "Checking nutritional value...",
-        "Recommending recipes...",
-        "Finalizing results...",
-    ]
+#     # Simulate processing steps with random delays
+#     steps = [
+#         "Analyzing your meal...",
+#         "Identifying ingredients...",
+#         "Checking nutritional value...",
+#         "Recommending recipes...",
+#         "Finalizing results...",
+#     ]
 
-    for step in steps:
-        # Simulate a random delay
-        time.sleep(random.uniform(0, 5))
+#     for step in steps:
+#         # Simulate a random delay
+#         time.sleep(random.uniform(0, 5))
 
-        # Add the new step to the list of messages
-        status_messages.append(f"✅ {step}")
+#         # Add the new step to the list of messages
+#         status_messages.append(f"✅ {step}")
 
-        # Add line breaks and update placeholder
-        formatted_messages = "<br>".join(status_messages)
-        status_placeholder.markdown(
-            f"<div style='line-height: 1.8;'>{formatted_messages}</div>",
-            unsafe_allow_html=True,
-        )
-
-    # Final success message
-    st.json(result)
+#         # Add line breaks and update placeholder
+#         formatted_messages = "<br>".join(status_messages)
+#         status_placeholder.markdown(
+#             f"<div style='line-height: 1.8;'>{formatted_messages}</div>",
+#             unsafe_allow_html=True,
+#         )
 
 
 ### STEP 3: KNN ###

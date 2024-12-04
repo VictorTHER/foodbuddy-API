@@ -19,7 +19,6 @@ from foodbuddy.Label_matcher.Target_match_setup import download_targets_df
 from foodbuddy.Label_matcher.Recipes_list_setup import download_recipes_df
 from foodbuddy.Label_matcher.Ingredients_list_setup import download_ingredients_df
 
-
 # Import parameters (API URL, etc.)
 from foodbuddy.params import *
 
@@ -46,7 +45,10 @@ async def lifespan(app: FastAPI):
     Lifespan context for loading resources on startup and cleanup on shutdown.
     """
     # Load data
-    app.state.targets = download_targets_df()
+    targets_df = download_targets_df()
+    app.state.targets = targets_df["recipe"].tolist()
+    app.state.nutrients = targets_df.drop(columns=["recipe"])
+
     app.state.recipes = download_recipes_df()
     app.state.ingredients = download_ingredients_df()
 
@@ -59,6 +61,7 @@ async def lifespan(app: FastAPI):
 
     # Shutdown: Cleanup things!
     del app.state.targets
+    del app.state.nutrients
     del app.state.recipes
     del app.state.ingredients
     del app.state.knn_model
@@ -79,7 +82,6 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
-
 
 
 ### STEP 4: MAKE ENDPOINTS! ###
@@ -193,15 +195,28 @@ async def analyze_image_endpoint(file: UploadFile = File(...)):
         img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
 
         # Run the preprocessed image through the RNN model
-        # rnn_model = app.state.rnn_model # TEMPORARY
-        # prediction = rnn_model.predict(img_array)
+        rnn_model = app.state.rnn_model
+        prediction = rnn_model.predict(img_array)
+
+        # Get the index of the highest probability
+        max_index = int(np.argmax(prediction))
+        print(max_index)
+
+        # Access the maximum probability value
+        max_probability = float(prediction[0, max_index])  # Correct indexing for 2D array
+        print(max_probability)
+
+        # Use app.state.targets for mapping
+        recipe_name = app.state.targets[max_index]
 
         # Clean up temporary files
         os.remove(temp_path)
 
-        # Return prediction
-        # return {"prediction": prediction.tolist()}
-        return {"prediction": ["gyoza"]}
+        return {
+            "predicted_recipe_index": max_index,
+            "predicted_recipe_name": recipe_name,
+            "probability": max_probability,
+        }
     except Exception as e:
         return {"error": f"Image analysis failed: {str(e)}"}
 
@@ -267,4 +282,6 @@ def root():
     """
     Test endpoint to verify the API is running.
     """
-    return {"message": "API is up and running :) "}
+    return {"message": "API is up and running :) ",
+            "target length": len(app.state.targets),
+            "target look":app.state.targets}

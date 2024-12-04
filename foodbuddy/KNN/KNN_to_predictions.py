@@ -22,7 +22,7 @@ def load_model():
         try:
             with open(model_path, "rb") as f:
                 model = pickle.load(f)
-            print("Model loaded successfully.")
+            print("KNN Model loaded successfully.")
             return model
         except Exception as e:
             raise RuntimeError(f"Error loading model from '{model_path}': {e}")
@@ -36,7 +36,7 @@ def load_scaler():
         try:
             with open(scaler_path, "rb") as f:
                 scaler = pickle.load(f)
-            print("Scaler loaded successfully.")
+            print("KNN Scaler loaded successfully.")
             return scaler
         except Exception as e:
             raise RuntimeError(f"Error loading scaler from '{scaler_path}': {e}")
