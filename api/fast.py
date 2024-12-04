@@ -243,10 +243,9 @@ def knn_recipes(payload: NutrientValues):
 
     # Process the input
     nutrient_values_scaled = knn_scaler.transform([nutrient_values])  # Use transform instead of fit_transform
-    nutrient_values_weighted = weighting_nutrients(nutrient_values_scaled)
 
     # Get the nearest neighbors
-    distances, indices = knn_model.kneighbors(nutrient_values_weighted, n_neighbors=10)
+    distances, indices = knn_model.kneighbors(nutrient_values_scaled, n_neighbors=10)
     recipe_names = app.state.recipes.iloc[indices[0]]["recipe"].tolist()
 
     # Query recipes and add distances

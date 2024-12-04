@@ -20,8 +20,7 @@ seaborn
 plotly
 altair
 folium
-streamlit
-streamlit_folium
+streamlit==1.13.0
 
 # Google Cloud and BigQuery
 google-cloud-storage==2.14.0
